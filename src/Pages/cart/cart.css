@@ -1,0 +1,13 @@
+.cart .titles h3 {
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.cart .titles,
+.cart-item {
+  display: grid;
+  grid-template-columns: 5fr 1fr 1fr 1fr;
+  align-items: center;
+  column-gap: 0.5rem;
+}
