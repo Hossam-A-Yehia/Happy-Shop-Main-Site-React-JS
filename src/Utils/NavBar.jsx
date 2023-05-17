@@ -17,7 +17,11 @@ function NavBar({ setComplaintTrue }) {
   const dispatch = useDispatch();
   return (
     <div className="sticky-top">
-      <nav className="navbar navbar-expand-lg bg-dark " data-bs-theme="dark">
+      <nav
+        className="navbar navbar-expand-lg bg-dark"
+        style={{ height: "auto" }}
+        data-bs-theme="dark"
+      >
         <div className="container-fluid px-4">
           <Link to="/">
             <img src={logo} alt="Logo" style={{ width: "65px" }} />

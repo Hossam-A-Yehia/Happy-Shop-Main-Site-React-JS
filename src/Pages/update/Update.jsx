@@ -1,9 +1,10 @@
-import {BsFillPersonFill} from "react-icons/bs"
-import {FcOvertime} from "react-icons/fc"
-import {AiFillPhone} from "react-icons/ai"
-import {AiOutlineMail} from "react-icons/ai"
-import {CiLocationOn} from "react-icons/ci"
-import {MdPublish} from "react-icons/md"
+import "./update.css";
+import { BsFillPersonFill } from "react-icons/bs";
+import { FcOvertime } from "react-icons/fc";
+import { AiFillPhone } from "react-icons/ai";
+import { AiOutlineMail } from "react-icons/ai";
+import { CiLocationOn } from "react-icons/ci";
+import { MdPublish } from "react-icons/md";
 import {
   getStorage,
   ref,
@@ -16,19 +17,19 @@ import { userRequest } from "../../Api/requestMethod";
 import { useEffect, useState } from "react";
 import { format } from "timeago.js";
 import app from "../../firebase.js";
-import { useDispatch } from "react-redux"
-import { loginSuccess } from "../../store/userSlice"
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../../store/userSlice";
 
 export default function Update() {
-  const dispatch = useDispatch()
-  const {id} = useParams()
+  const dispatch = useDispatch();
+  const { id } = useParams();
   const [updateUser, setUpdateUser] = useState({});
   const [file, setFile] = useState(null);
   const [img, setImg] = useState("");
-  const userInfo = JSON.parse(localStorage.getItem("user"))
+  const userInfo = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
-        if (file !== null) {
+    if (file !== null) {
       const fileName = new Date().getTime() + file?.name;
       const storage = getStorage(app);
       const storageRef = ref(storage, fileName);
@@ -50,8 +51,7 @@ export default function Update() {
         }
       );
     }
-
-  }, [ id,file]);
+  }, [id, file]);
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -61,7 +61,6 @@ export default function Update() {
     });
   };
 
-
   const handleClick = async (e) => {
     e.preventDefault();
     try {
@@ -70,23 +69,23 @@ export default function Update() {
         img: img ? img : userInfo.img,
       });
       console.log(res.data);
-      dispatch(loginSuccess(res.data))
+      dispatch(loginSuccess(res.data));
     } catch (err) {
       console.log(err);
     }
   };
 
-console.log(img);
+  console.log(img);
   return (
     <div className="m-3 p-3">
       <div className="d-flex align-items-center justify-content-between">
         <h1>تحديث الحساب الشخصي</h1>
       </div>
-      <div className="d-flex mt-3">
+      <div className="update d-flex mt-3  gap-3">
         <div className="shadow p-3" style={{ flex: "1" }}>
           <div className="d-flex align-items-center">
             <img
-              src={ userInfo.img}
+              src={userInfo.img}
               alt=""
               className="rounded-circle"
               style={{ width: "40px", height: "40px", objectFit: "cover" }}
@@ -138,10 +137,10 @@ console.log(img);
             </div>
           </div>
         </div>
-        <div className="shadow p-3 me-3" style={{ flex: "2" }}>
+        <div className="shadow p-3" style={{ flex: "2" }}>
           <span className="fw-bold fs-4">تحديث</span>
           <form className="d-flex justify-content-between mt-3">
-            <div className="w-50">
+            <div className="inputs w-50">
               <div className="d-flex flex-column mt-1">
                 <label style={{ marginBottom: "5px", fontSize: "14px" }}>
                   اسم المتسخدم
@@ -218,9 +217,16 @@ console.log(img);
                 <label htmlFor="file">
                   <MdPublish className="fs-4" style={{ cursor: "pointer" }} />
                 </label>
-                <input type="file" id="file" onChange={e => setFile(e.target.files[0])} style={{ display: "none" }} />
+                <input
+                  type="file"
+                  id="file"
+                  onChange={(e) => setFile(e.target.files[0])}
+                  style={{ display: "none" }}
+                />
               </div>
-              <button className="btn btn-success" onClick={handleClick}>تحديث</button>
+              <button className="btn btn-success" onClick={handleClick}>
+                تحديث
+              </button>
             </div>
           </form>
         </div>
@@ -228,4 +234,3 @@ console.log(img);
     </div>
   );
 }
-

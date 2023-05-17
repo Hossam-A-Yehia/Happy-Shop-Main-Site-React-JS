@@ -20,7 +20,7 @@ function Cart() {
   const payNow = async (token) => {
     try {
       const res = await userRequest({
-        url: "http://localhost:5000/api/checkout/payment",
+        url: "https://e-commerce-back-end-psi.vercel.app/api/checkout/payment",
         method: "post",
         data: {
           amount: cartProducts.price * 100,
@@ -60,7 +60,7 @@ function Cart() {
                   key={item.date}
                   style={{ borderTop: "1px solid #999", padding: "2rem 0 " }}
                 >
-                  <div className="d-flex align-items-center" style={{}}>
+                  <div className="pro d-flex align-items-center" style={{}}>
                     <img
                       src={item.img}
                       alt={item.title}
@@ -100,15 +100,16 @@ function Cart() {
                       </button>
                     </div>
                   </div>
-                  <div>
+                  <div className="price">
                     {item.price} <sup>جنيه</sup>
                   </div>
-                  <div className={`${flex} justify-content-center`}>
-                    <span className="d-block border border-primary rounded-2 py-1 px-3">
+                  <div className={`${flex} quantity justify-content-center`}>
+                    <span className="  d-block border border-primary rounded-2 py-1 px-3">
                       {item.quantity}
                     </span>
                   </div>
                   <div
+                    className="total"
                     style={{
                       margin: "0 0.5rem",
                       textAlign: "left",
@@ -121,7 +122,7 @@ function Cart() {
               ))}
             </div>
             <div
-              className="d-flex align-items-center justify-content-between py-4"
+              className="checkout d-flex align-items-center justify-content-between py-4"
               style={{ borderTop: "1px solid #999" }}
             >
               <button
@@ -155,8 +156,8 @@ function Cart() {
                     label="Pay Now"
                     billingAddress
                     shippingAddress
-                    description={`Your total is ${total*discount} `}
-                    amount={(total *discount) * 100}
+                    description={`Your total is ${total * discount} `}
+                    amount={total * discount * 100}
                     token={payNow}
                     stripeKey={KEY}
                   >

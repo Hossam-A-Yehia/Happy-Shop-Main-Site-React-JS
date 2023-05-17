@@ -8,7 +8,7 @@ function SecNav() {
   return (
     <div
       className="sec__nav bg-white w-100 border-bottom border-danger"
-      style={{ maxHeight: "50px" }}
+      style={{ maxHeight: "50px", overflow: "hidden" }}
     >
       <div className="container-fluid h-100">
         <ul className="nav nav-pills h-100  d-flex align-items-center">
@@ -37,15 +37,15 @@ function SecNav() {
             </ul>
           </li>
           {cat?.map((e) => (
-              <li key={e.id} className="nav-item">
-                <Link
-                  to={`category/${e.title}`}
-                  className="nav-link fw-bold"
-                  href="#"
-                >
-                  {e.title}
-                </Link>
-              </li>
+            <li key={e.id} className="nav-item">
+              <Link
+                to={`category/${e.title}`}
+                className="nav-link fw-bold"
+                href="#"
+              >
+                {e.title}
+              </Link>
+            </li>
           ))}
         </ul>
       </div>

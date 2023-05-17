@@ -1,0 +1,9 @@
+@media (max-width: 639px) {
+  .products form {
+    width: 100% !important;
+  }
+  .products .sort {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

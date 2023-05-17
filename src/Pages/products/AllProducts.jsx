@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Row } from "react-bootstrap";
-import img2 from "../../Image/hhh/download (1).jpg";
 import img3 from "../../Image/hhh/download (2).jpg";
 import Pagination from "../../components/pagination/Pagination";
 import CardProduct from "../../components/Products/CardProduct";
 import { publicRequest } from "../../Api/requestMethod";
 import Loader3 from "../loader/Loader3";
 import { AiOutlineSearch } from "react-icons/ai";
+import "./allProducts.css";
 
 function AllProducts() {
   const [data, setData] = useState([]);
@@ -89,15 +89,13 @@ function AllProducts() {
   };
   console.log(id);
   return (
-    <div className="p-2">
+    <div className=" products p-2">
       <div
         className="py-3 px-4 mt-2 fs-4 fw-bold"
         style={{ borderBottom: "1px solid #999" }}
       >
         {id ? id : "جميع المنتجات"}
       </div>
-      {/* <img src={img1} className="mt-3" style={{ width: "100%" }} /> */}
-      {/* <img src={img2} alt="A" className="mt-3" style={{ width: "100%" }} /> */}
       <img
         src={img3}
         alt="A"
@@ -105,10 +103,10 @@ function AllProducts() {
         style={{ width: "100%" }}
         data-aos="fade-up"
       />
-      <div className="d-flex align-items-center justify-content-between">
-          {id === "الاحذية" || id === "ملابس" ? (
-        <div className="d-flex align-items-center mt-3">
-            <h4>تصنيف حسب  :</h4>
+      <div className=" sort d-flex align-items-center justify-content-between">
+        {id === "الاحذية" || id === "ملابس" ? (
+          <div className="d-flex align-items-center mt-3">
+            <h4 style={{ whiteSpace: "nowrap" }}>تصنيف حسب :</h4>
             <div className="mx-2">
               <select
                 className="form-select "
@@ -128,38 +126,45 @@ function AllProducts() {
               </select>
             </div>
             <div>
-            <select
-              className="form-select "
-              name="size"
-              onChange={handleFilters}
-            >
-              <option selected disabled>
-                الحجم
-              </option>
-              {id === "ملابس" ?<>
-              <option>الكل</option>
-              <option>S</option>
-              <option>M</option>
-              <option>L</option>
-              <option>XL</option>
-              <option>XXL</option></> :<>
-              <option>الكل</option>
-              <option>37</option>
-              <option>38</option>
-              <option>39</option>
-              <option>40</option>
-              <option>41</option>
-              <option>42</option>
-              <option>43</option>
-              <option>44</option>
-              </>}
-            </select>
+              <select
+                className="form-select "
+                name="size"
+                onChange={handleFilters}
+              >
+                <option selected disabled>
+                  الحجم
+                </option>
+                {id === "ملابس" ? (
+                  <>
+                    <option>الكل</option>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                    <option>XL</option>
+                    <option>XXL</option>
+                  </>
+                ) : (
+                  <>
+                    <option>الكل</option>
+                    <option>37</option>
+                    <option>38</option>
+                    <option>39</option>
+                    <option>40</option>
+                    <option>41</option>
+                    <option>42</option>
+                    <option>43</option>
+                    <option>44</option>
+                  </>
+                )}
+              </select>
+            </div>
           </div>
-        </div>
-          ):""}
+        ) : (
+          ""
+        )}
 
         <div className="d-flex align-items-center mt-3">
-          <h4>تصنيف المنتجات :</h4>
+          <h4 style={{ whiteSpace: "nowrap" }}>تصنيف المنتجات :</h4>
           <div className="mx-3">
             <select
               className="form-select "

@@ -23,7 +23,7 @@ function Register() {
     if (
       username === "" ||
       email === "" ||
-      phone === ""||
+      phone === "" ||
       address === "" ||
       password.length < 8 ||
       password !== ConfirmPassword
@@ -38,7 +38,7 @@ function Register() {
           email,
           password,
           address,
-          phone
+          phone,
         });
         res.data && window.location.replace("/login");
         setRuun(false);
@@ -50,7 +50,7 @@ function Register() {
   };
 
   return (
-    <div className="register  d-flex align-items-center justify-content-center w-100  ">
+    <div className="login  d-flex align-items-center justify-content-center w-100  ">
       <div style={{ width: "800px" }}>
         <form
           className="  mx-auto my-5 w-100"
@@ -90,10 +90,9 @@ function Register() {
                 onChange={(e) => setAddress(e.target.value)}
                 value={address}
               />
-              { address === ""  && run && (
+              {address === "" && run && (
                 <p className="text-danger fs-5">يجب كتابة العنوان</p>
               )}
-
             </div>
             <div className="col-12 col-md-5 p-2">
               <label className="text-white px-2 mt-3 mb-1">
@@ -123,9 +122,7 @@ function Register() {
               {password !== ConfirmPassword && run && (
                 <p className="text-danger fs-5">كلمة المرور غير مطابقة</p>
               )}
-              <label className="text-white px-2 mt-3 mb-1">
-                الهاتف
-              </label>
+              <label className="text-white px-2 mt-3 mb-1">الهاتف</label>
               <input
                 type="number"
                 className="form-control"

@@ -9,10 +9,12 @@ a {
   text-decoration: none;
   color: black !important;
 }
-.active>.page-link, .page-link {
+.active > .page-link,
+.page-link {
   color: #0d6efd !important;
 }
-.active>.page-link, .page-link.active {
+.active > .page-link,
+.page-link.active {
   color: #fff !important;
 }
 ul {
@@ -32,7 +34,6 @@ ul {
 .custem__button:hover {
   opacity: 1;
 }
-
 
 .slider-background {
   background: linear-gradient(173.68deg, #ffedf5 0%, #ffd5e7 100%);
@@ -200,13 +201,12 @@ ul {
   color: rgb(206, 204, 204);
 }
 
-/* end login and register */
-/* Home Category */
-/* @media (max-width: 639px) {
+@media (max-width: 639px) {
   .swiper-slide {
-    min-width: 50% ;
-    margin-left: 0 !important;
+    min-width: 50%;
+    margin-left: 5px !important;
   }
-} */
-
-
+  .carousel {
+    display: none;
+  }
+}

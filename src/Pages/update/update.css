@@ -1,0 +1,16 @@
+@media (max-width: 639px) {
+  .update {
+    flex-direction: column;
+  }
+  .update form {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  .update form .inputs {
+    width: 100% !important;
+  }
+  .button.btn.btn-success {
+    margin: 20px 0;
+  }
+}
